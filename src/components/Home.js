@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+import Pokeball from '../pokeball.png';
+
 
 class Home extends Component {
         
@@ -31,11 +34,14 @@ class Home extends Component {
                 return (
 
                     <div className="post card" key={post.id}>
-                    <div className="card-content">
-                        <h1 className="card-title">{post.title}</h1>
-                        <p className="">{post.body}</p>
+                        <div className="card-content">
+                            <NavLink to={'/' + post.id}>
+                                <img src={Pokeball} alt="pok im"/>
+                                <h1 className="card-title">{post.title}</h1>
+                                <p className="">{post.body}</p>
+                            </NavLink>
+                        </div>
                     </div>
-                </div>
                     )
             })
         ) : (
