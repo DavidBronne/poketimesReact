@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+/* import axios from 'axios'; */
 import { NavLink } from 'react-router-dom';
 import Pokeball from '../pokeball.png';
+import { connect } from 'react-redux';
 
 
 class Home extends Component {
         
-    state = {
+   /*  state = {
         posts:[]
-    }
-    
+    } 
     componentDidMount () {
         axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(res=> {
@@ -19,15 +19,15 @@ class Home extends Component {
                     posts : res.data.slice(0,10)
                 })
         })
-
     }
-   
+    */
     
 
 
     render () {
+        console.log(this.props);
         
-        const {posts} = this.state;
+        const {posts} = this.props;
 
         const postsList = posts.length ? (
             posts.map( post => {
@@ -56,4 +56,11 @@ class Home extends Component {
         )
     } 
 }
- export default Home
+
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts
+    
+}
+}
+ export default connect(mapStateToProps)(Home)
